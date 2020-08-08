@@ -1,11 +1,10 @@
 import tkinter
 from functions import send
-from datetime import datetime
 
 
 window = tkinter.Tk()
-window.geometry('255x300')
-window.resizable(0,0)
+#window.geometry('255x300')
+#window.resizable(0,0)
 window.configure(bg="#263D42")
 window.title('Auto presente')
 window.iconbitmap('icon.ico')
@@ -35,7 +34,12 @@ hour_2_box = tkinter.Entry(frame,font = "helvetica 13", justify = "center")
 hour_2_box.insert(3, ":")
 hour_2_box.pack()
 
-send_buttom = tkinter.Button(frame, text = "programar",font = "helvetica 13",command= lambda: send(name_box,message_box,hour_1_box,hour_2_box))
+filtro_label = tkinter.Label(frame, text = "filtro",font = "helvetica 13")
+filtro_label.pack()
+filtro_box = tkinter.Entry(frame,font = "helvetica 13", justify = "center")
+filtro_box.pack()
+
+send_buttom = tkinter.Button(frame, text = "programar",font = "helvetica 13",command= lambda: send(name_box,message_box,hour_1_box,hour_2_box,filtro_box))
 send_buttom.pack()
 
 window.mainloop()
