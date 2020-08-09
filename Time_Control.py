@@ -5,28 +5,24 @@ class Time_Control():
 
     def hora(self ,horaParaConvertir):
         if horaParaConvertir == None:
-            current_time = datetime.strftime(datetime.now(),"%H:%M:%S") #output: hora actual del pc
+            current_time = datetime.strftime(datetime.now(),"%H:%M") #output: hora actual del pc
+            current_time = datetime.strptime(current_time, "%H:%M")
 
-            ahora = current_time.split(':')
-
-            if ahora[0] == "00":
-                ahora[0] = "24"
-
-            a = int(ahora[0] + ahora[1])
-
-            return a
+            return current_time
         else:
-            hora = horaParaConvertir.split(':')
-            b = int(hora[0] + hora[1])
+            ahora = datetime.strptime(horaParaConvertir, "%H:%M")
 
-            return b
+            return ahora
 
     def timer(self,hora_1,ahora):
     
         while ahora < hora_1:
-            print(ahora,hora_1)
+            resta = hora_1 - ahora
+
+            hora = resta.total_seconds()
+
             print("esperando...")
-            self.wait(1800)
+            self.wait(resta.total_seconds())
             ahora = self.hora(horaParaConvertir=None)
 
     def wait(self,tiempo_segundos):
