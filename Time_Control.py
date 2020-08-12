@@ -18,10 +18,7 @@ class Time_Control():
     
         while ahora < hora_1:
             resta = hora_1 - ahora
-
-            hora = resta.total_seconds()
-
-            print("esperando...")
+            print(f"esperando {resta} segundos")
             self.wait(resta.total_seconds())
             ahora = self.hora(horaParaConvertir=None)
 

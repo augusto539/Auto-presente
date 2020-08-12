@@ -1,6 +1,8 @@
 from tkinter import *
-from functions import send
+from tkinter import messagebox
+from functions import functions
 
+f=functions()
 
 window = Tk()
 window.geometry('300x400')
@@ -16,26 +18,33 @@ menubar = Menu(window)
 filemenu = Menu(menubar, tearoff=0)
 
 debug = BooleanVar()
-debug.get()
+filemenu.add_checkbutton(label="Debug mode", variable=debug,onvalue=True, offvalue=False,command= lambda: f._debug(debug))
 
-filemenu.add_radiobutton(label="Debug mode", variable=debug, value=True)
 
 filemenu.add_separator()
 
 filemenu.add_command(label="Exit", command=window.quit)
 menubar.add_cascade(label="File", menu=filemenu)
 
-var = IntVar()
-var.get()
-
+T_filtro = IntVar()
+T_filtro.set(2)
+T_filtro.get()
 filter_menu = Menu(menubar, tearoff=0)
-filter_menu.add_radiobutton(label="Filtro Absoluto", variable=var, value=1)
-filter_menu.add_radiobutton(label="Filtro Parcial", variable=var, value=2)
+
+filter_menu.add_radiobutton(label="Filtro Absoluto",variable=T_filtro, value=1)
+filter_menu.add_radiobutton(label="Filtro Parcial",variable=T_filtro, value=2)
+
+filter_menu.add_separator()
+
+CamelCase = BooleanVar()
+filter_menu.add_checkbutton(label="Solo CamelCase",variable=CamelCase,onvalue=True, offvalue=False,command= lambda: f._CamelCase(CamelCase))
+negativo = BooleanVar()
+negativo.set(True)
+filter_menu.add_checkbutton(label="Negativos exclullentes",variable=negativo,onvalue=True, offvalue=False,command= lambda: f._Negative(negativo))
+
+
 
 menubar.add_cascade(label="Filtros", menu=filter_menu)
-
-
-
 
 
 name_label = Label(frame, text = "nombre del cotacto o grupo:",font = "helvetica 13")
@@ -65,7 +74,7 @@ filtro_label.pack()
 filtro_box = Entry(frame,font = "helvetica 13", justify = "center")
 filtro_box.pack()
 
-send_buttom = Button(frame, text = "programar",font = "helvetica 13",command= lambda: send(name_box,message_box,hour_1_box,hour_2_box,filtro_box,var,debug))
+send_buttom = Button(frame, text = "programar",font = "helvetica 13",command= lambda: f.send(name_box,message_box,hour_1_box,hour_2_box,filtro_box,T_filtro))
 send_buttom.pack()
 
 window.configure(menu=menubar)
