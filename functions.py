@@ -84,6 +84,4 @@ To exit send an "EXIT" message""", title="Auto messenger")
         else:
             messagebox.showinfo(message="Negative mode enabled.", title="Auto messenger")
 
-        
-
 
