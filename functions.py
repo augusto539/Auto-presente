@@ -34,10 +34,13 @@ class functions():
         self.main()
 
     def main(self):
-        driver = webdriver.Chrome("chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        driver = webdriver.Chrome(executable_path='chromedriver.exe', options=options)
+
         driver.get('https://web.whatsapp.com/')
 
-        messagebox.showinfo(message="do not click in accept until scan de QR code", title="Auto messenger")
+        messagebox.showinfo(message="do not click in accept until scan de QR code", title="Auto Presente")
 
         TC.wait(1)
 
@@ -55,33 +58,27 @@ class functions():
 
     def _debug(self,debug):
         self.debug = debug.get()
-        self._debug_ += 1
-        b = self._debug_ % 2
 
-        if b == 0:
-            messagebox.showinfo(message="Debug mode disabled", title="Auto messenger")
+        if self.debug == False:
+            messagebox.showinfo(message="Debug mode disabled", title="Auto Presente")
         else:
             messagebox.showinfo(message="""Debug mode enabled. 
-To exit send an "EXIT" message""", title="Auto messenger")
+To exit send an "EXIT" message""", title="Auto Presente")
 
     def _CamelCase(self,CamelCase):
         self.CamelCase = CamelCase.get()
-        self._CamelCase_ += 1
-        b = self._CamelCase_ % 2
 
-        if b == 0:
-            messagebox.showinfo(message="CamelCase mode disabled", title="Auto messenger")
+        if self.debug == False:
+            messagebox.showinfo(message="CamelCase mode disabled", title="Auto Presente")
         else:
-            messagebox.showinfo(message="CamelCase mode enabled.", title="Auto messenger")
+            messagebox.showinfo(message="CamelCase mode enabled.", title="Auto Presente")
 
     def _Negative(self,negativo):
         self.exn = negativo.get() 
-        self._Negative_ += 1
-        b = self._Negative_ % 2
 
-        if b == 0:
-            messagebox.showinfo(message="Negative mode disabled", title="Auto messenger")
+        if self.debug == False:
+            messagebox.showinfo(message="Negative mode disabled", title="Auto Presente")
         else:
-            messagebox.showinfo(message="Negative mode enabled.", title="Auto messenger")
+            messagebox.showinfo(message="Negative mode enabled.", title="Auto Presente")
 
 

@@ -3,8 +3,8 @@ from io import open
 class perfiles():
     def __init__(self):
         self.list_of_profiles = []
-        self.nombres = ['---Basio---','---Basio---','---Basio---','---Basio---','---Basio---']
-        self.ips = ['---Basio---','---Basio---','---Basio---','---Basio---','---Basio---']
+        self.nombres = ['---vacío---','---vacío---','---vacío---','---vacío---','---vacío---']
+        self.ips = ['---vacío---','---vacío---','---vacío---','---vacío---','---vacío---']
 
     def gurdar(self,nombre_de_guardado,nombre,mensaje,h1,h2,filtro):
         perfiles = open("perfiles.txt","r")
@@ -65,5 +65,4 @@ class perfiles():
             self.nombres[a] = _entrys_[0]
             self.ips[a] = list_of_line[0]
         perfiles.close()
-        # (f"{ip}|{nombre_de_guardado};{nombre};{mensaje};{h1};{h2};{filtro}|\n")
         
